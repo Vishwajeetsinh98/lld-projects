@@ -1,0 +1,45 @@
+# IntelliJ IDEA specific
+.idea/
+*.iml
+
+# MacOS
+.DS_Store
+
+# Build output
+*/target/
+*/build/
+
+# Logs
+*.log
+
+# Java class files
+*.class
+
+# Maven specific
+*/.settings/
+*/.classpath
+*/.project
+
+# Gradle specific
+.gradle/
+*/out/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Coverage reports
+*/coverage/
+*.exec
+*.cobertura
+
+# System files
+Thumbs.db
+
+# Node projects (if any accidentally get added)
+node_modules/
+
+# JetBrains specific
+*.iws
+
