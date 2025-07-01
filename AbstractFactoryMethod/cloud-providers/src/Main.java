@@ -1,6 +1,4 @@
 import factories.CloudProviderFactory;
-import factories.impl.AWSCloudFactory;
-import factories.impl.AzureCloudFactory;
 import factories.impl.GCPCloudFactory;
 
 public class Main {
