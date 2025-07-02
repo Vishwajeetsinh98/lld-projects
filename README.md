@@ -7,7 +7,7 @@ This is a place where I try out various LLD problems for practice.
 - [x] **Builder**: Restaurant meal order building system.
 - [x] **Prototype**: Document cloning system
 - [x] **PrototypeRegistry**: Shape Collection
-- [ ] Singleton
+- [x] 🟡 **Singleton**: DB connection manager - Follow ups pending
 
 ## Structural Patterns
 - [ ] Adapter
