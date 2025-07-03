@@ -11,7 +11,7 @@ This is a place where I try out various LLD problems for practice.
 
 ## Structural Patterns
 - [x] **Adapter**: Media player allowing playing of wav and mp3 files using a LegacyMediaPlayer
-- [ ] Bridge
+- [x] **Bridge**: Shape rendering engine that uses Vectorized and Raster renderes
 - [ ] Composite
 - [ ] Decorator
 - [ ] Facade
