@@ -48,7 +48,7 @@ public class VectorizedRenderer extends JFrame implements Renderer {
 
         @Override
         public void paintComponent(Graphics g) {
-//            super.paintComponent(g);
+            super.paintComponent(g);
             for (int[] shape : shapes) {
                 if (shape[3] == ShapeType.SQUARE.ordinal()) {
                     g.setColor(Color.RED);
