@@ -10,7 +10,7 @@ This is a place where I try out various LLD problems for practice.
 - [x] 🟡 **Singleton**: DB connection manager - Follow ups pending
 
 ## Structural Patterns
-- [ ] Adapter
+- [x] **Adapter**: Media player allowing playing of wav and mp3 files using a LegacyMediaPlayer
 - [ ] Bridge
 - [ ] Composite
 - [ ] Decorator
