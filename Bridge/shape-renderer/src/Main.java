@@ -5,7 +5,7 @@ import shapes.impl.Circle;
 import shapes.impl.Square;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 //        VectorizedRenderer renderer = new VectorizedRenderer();
         RasterRenderer renderer = new RasterRenderer();
         Shape circle = new Circle(renderer, 1, 1, 10);
