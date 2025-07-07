@@ -16,7 +16,7 @@ This is a place where I try out various LLD problems for practice.
 - [x] **Decorator**: Coffee Shop order customization
 - [x] **Facade**: Home automation system
 - [x] **Flyweight**: Text Editor for large document
-- [ ] Proxy
+- [x] **Proxy**: Image loading service
 
 ## Behavioral patterns
 - [ ] Chain of responsibility
