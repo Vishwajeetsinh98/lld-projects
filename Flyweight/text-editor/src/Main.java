@@ -5,9 +5,25 @@ public class Main {
     public static void main(String[] args) {
         TextEditor textEditor = new TextEditor("LargeDocument.txt");
 
+        // sizes: 5, 15, 7; worst case size: 15 bytes
         String[] fonts = {"Arial", "Times New Roman", "Courier"};
+
+        // sizes: 5, 4, 3; worst case size: 5 bytes
         String[] colors = {"Black", "Blue", "Red"};
+
+        // size: 4 bytes
         int[] fontSizes = {12, 14, 16};
+
+        // Single Character object size: 9 bytes
+        // All characters total size: 9 * 100_000 = 900 KB
+        // Font styles are Arial + Black + 12, Times + Blue + 14, Courier + Red + 16.
+        // CharacterType objects total size: 14 + 23 + 14  = 71 bytes
+        // Total memory use: 971 bytes
+
+
+        // WITHOUT FLYWEIGHT:
+        // Each object worst case size: 9 + 24 = 33 bytes
+        // Total size without Flyweight: 3.3 MB
 
         int totalCharacters = 100_000;
 
