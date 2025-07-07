@@ -14,7 +14,7 @@ This is a place where I try out various LLD problems for practice.
 - [x] **Bridge**: Shape rendering engine that uses Vectorized and Raster renderers
 - [x] **Composite**: FileSystem implementation
 - [x] **Decorator**: Coffee Shop order customization
-- [ ] Facade
+- [x] **Facade**: Home automation system
 - [ ] Flyweight
 - [ ] Proxy
 
