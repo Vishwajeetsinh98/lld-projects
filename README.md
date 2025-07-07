@@ -15,7 +15,7 @@ This is a place where I try out various LLD problems for practice.
 - [x] **Composite**: FileSystem implementation
 - [x] **Decorator**: Coffee Shop order customization
 - [x] **Facade**: Home automation system
-- [ ] Flyweight
+- [x] **Flyweight**: Text Editor for large document
 - [ ] Proxy
 
 ## Behavioral patterns
