@@ -19,7 +19,7 @@ This is a place where I try out various LLD problems for practice.
 - [x] **Proxy**: Image loading service
 
 ## Behavioral patterns
-- [ ] Chain of responsibility
+- [x] **Chain of responsibility**: Logging service with different logger types.
 - [ ] Command
 - [ ] Iterator
 - [ ] Mediator
