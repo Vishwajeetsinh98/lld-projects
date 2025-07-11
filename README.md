@@ -20,7 +20,7 @@ This is a place where I try out various LLD problems for practice.
 
 ## Behavioral patterns
 - [x] **Chain of responsibility**: Logging service with different logger types.
-- [ ] Command
+- [x] **Command**: Text editor insert delete undo redo
 - [ ] Iterator
 - [ ] Mediator
 - [ ] Memento
