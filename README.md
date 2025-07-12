@@ -22,7 +22,7 @@ This is a place where I try out various LLD problems for practice.
 - [x] **Chain of responsibility**: Logging service with different logger types.
 - [x] **Command**: Text editor insert delete undo redo
 - [x] **Iterator**: Social media app with Factory, Iterator and Singleton patterns
-- [ ] Mediator
+- [x] **Mediator**: Chat room with multiple users
 - [ ] Memento
 - [ ] Observer
 - [ ] State
