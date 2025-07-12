@@ -21,7 +21,7 @@ This is a place where I try out various LLD problems for practice.
 ## Behavioral patterns
 - [x] **Chain of responsibility**: Logging service with different logger types.
 - [x] **Command**: Text editor insert delete undo redo
-- [ ] Iterator
+- [x] **Iterator**: Social media app with Factory, Iterator and Singleton patterns
 - [ ] Mediator
 - [ ] Memento
 - [ ] Observer
