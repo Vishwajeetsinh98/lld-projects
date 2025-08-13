@@ -54,4 +54,7 @@ public abstract class User {
         }
     }
 
+    public void getNotification(String message) {
+        System.out.println("[User] " + name + " libraryCard: " + libraryCard + " got message:\n" + message);
+    }
 }
