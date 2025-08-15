@@ -42,6 +42,7 @@ public class PINService {
         pinExpiryMap.remove(pin);
     }
 
+    // TODO: Run every 3 days
     private void cleanupExpiredPINs() {
         long now = Instant.now().toEpochMilli();
         pinExpiryMap.forEach((pin, expiry) -> {

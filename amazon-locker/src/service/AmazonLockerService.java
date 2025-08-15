@@ -55,6 +55,12 @@ public class AmazonLockerService {
         }
 
         LockerLocation lockerLocation = lockerLocationMap.get(order.getLockerLocationId());
+
+        if (!lockerLocation.isOpen()) {
+            System.out.println("[AmazonLockerService] Locker location unserviceable. Please try from: " + lockerLocation.getOpenTime() + " - " + lockerLocation.getCloseTime());
+            return;
+        }
+
         for (Package aPackage : order.getPackages()) {
             System.out.println("[AmazonLockerService] Returning Package " + aPackage.getId() + " from: " + aPackage.getLockerId());
             Locker locker = lockerLocation.getLockerById(aPackage.getLockerId());
@@ -65,6 +71,7 @@ public class AmazonLockerService {
             locker.setLockerStatus(LockerStatus.VACANT);
         }
         order.setDelivered(true);
+        PINService.getInstance().invalidateOtp(pin);
     }
 
     public Order createReturnRequest(Order order) {
