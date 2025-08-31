@@ -1,0 +1,11 @@
+### The requirements for the hotel management system are defined below:
+- [x] **R1:** The system can have four types of accounts, such as housekeeper, receptionist, and guest.
+- [x] **R2:** The rooms can be of different styles, such as standard, deluxe, family suite, or business suite.
+- [x] **R3:** The system should allow guests to search for and book any available room.
+- [x] **R4:** During room booking, the user will enter the check-in date and the duration of the stay. The user would also have to give some advance payment.
+- [x] **R5:** The customer can cancel the booking; a full refund will be provided if the booking is canceled before 24 hours of check-in time.
+- [x] **R6:** The system should notify customers about the booking status or other information.
+- [x] **R7:** The system should log and manage all the cleanup tasks.
+- [x] **R8:** The system should allow the customer to add services of their choice, such as room service, food or kitchen service, or amenities.
+- [x] **R9:** Every room should have its specific key, and there can be a master key that opens a specific set of rooms.
+- [x] **R10:** A hotel can have multiple branches.
