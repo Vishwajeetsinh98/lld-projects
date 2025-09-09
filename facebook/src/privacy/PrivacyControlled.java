@@ -45,4 +45,8 @@ public abstract class PrivacyControlled {
         if (!check(viewer))
             throw new IllegalArgumentException("User " + viewer + " cannot see this content");
     }
+
+    public PrivacyControlled getParent() {
+        return parent;
+    }
 }

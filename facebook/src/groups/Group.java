@@ -1,23 +1,53 @@
 package groups;
 
 import interfaces.Followable;
+import system.FacebookSystem;
 import users.User;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Group implements Followable {
     private final String name;
     private final Set<User> followers;
+    private final List<User> requests;
+    private final FacebookSystem facebookSystem;
     private User admin;
     public Group(String name) {
         this.name = name;
         followers = new HashSet<>();
+        requests = new ArrayList<>();
+        facebookSystem = FacebookSystem.getInstance();
     }
 
     public Group (String name, User admin) {
         this(name);
         setAdmin(admin);
+    }
+
+    public void addFollowRequest(User from) {
+        System.out.println("[Group] " + name + " received a follow request from: " + from.getUsername());
+        requests.add(from);
+    }
+
+    public void acceptRequest(User caller, User from) {
+        if (caller != admin)
+            throw new IllegalArgumentException("Group follow requests can only be accepted by admins!");
+        if (!requests.contains(from)) {
+            return;
+        }
+        facebookSystem.acceptGroupRequest(this, from);
+        requests.remove(from);
+    }
+
+    public void rejectRequest(User caller, User from) {
+        if (caller != admin)
+            throw new IllegalArgumentException("Group follow requests can only be accepted by admins!");
+        if (!requests.contains(from)) return;
+        facebookSystem.rejectGroupRequest(this, from);
+        requests.remove(from);
     }
 
     @Override

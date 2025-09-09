@@ -21,9 +21,11 @@ public class Comment extends PrivacyControlled implements Commentable {
     }
 
     @Override
-    public void addComment(User commenter, String content) {
+    public Comment addComment(User commenter, String content) {
         if (!check(commenter)) throw new IllegalArgumentException("User " + commenter.getUsername() + " cannot comment on this comment");
-        comments.add(new Comment(parent, commenter, content));
+        Comment comment = new Comment(parent, commenter, content);
+        comments.add(comment);
+        return comment;
     }
 
     @Override
@@ -34,4 +36,7 @@ public class Comment extends PrivacyControlled implements Commentable {
             comment.render(viewer, tabs + 2);;
         }
     }
+
+    public User getAuthor() { return author; }
+
 }

@@ -3,11 +3,16 @@ package users;
 import groups.Group;
 import interfaces.Followable;
 import interfaces.PrivacyController;
+import posts.Post;
+import posts.comments.Comment;
 import privacy.PrivacyControlled;
 import privacy.PrivacyType;
+import system.FacebookSystem;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class User implements Followable, PrivacyController {
@@ -17,14 +22,66 @@ public class User implements Followable, PrivacyController {
     private final Set<Followable> following;
     private final Set<User> followers;
     private final Set<User> blocked;
+    private final List<User> requests;
+    private final FacebookSystem facebookSystem;
 
     public User(String username) {
         this.username = username;
         profile = new Profile(this);
-        this.friends = new HashSet<>();
-        this.following = new HashSet<>();
-        this.followers = new HashSet<>();
-        this.blocked = new HashSet<>();
+        friends = new HashSet<>();
+        following = new HashSet<>();
+        followers = new HashSet<>();
+        blocked = new HashSet<>();
+        requests = new ArrayList<>();
+        facebookSystem = FacebookSystem.getInstance();
+    }
+
+    public Post createPost(String content) {
+        System.out.println("[User] " + username + " creating a new post.");
+        return facebookSystem.createPost(this, content);
+    }
+
+    public Comment addComment(Post post, String content) {
+        System.out.println("[User] " + username + " commenting on a post.");
+        return facebookSystem.createComment(post, this, content);
+    }
+
+    public Comment addComment(Comment comment, String content) {
+        System.out.println("[User] " + username + " commenting on a comment.");
+        return facebookSystem.createComment(comment, this, content);
+    }
+
+    public void createFriendRequest(User to) {
+        System.out.println("[User] " + username + " sending friend request to: " + to.username);
+        facebookSystem.createFriendRequest(this, to);
+    }
+
+    public void addFriendRequest(User from) {
+        System.out.println("[User] " + username + " received a friend request from: " + from.username);
+        requests.add(from);
+    }
+
+    public void acceptRequest(User from) {
+        if (!requests.contains(from)) {
+            return;
+        }
+        facebookSystem.acceptRequest(this, from);
+        requests.remove(from);
+    }
+
+    public void rejectRequest(User from) {
+        if (!requests.contains(from)) return;
+        facebookSystem.rejectRequest(this, from);
+        requests.remove(from);
+    }
+
+    public void createGroupFollowRequest(Group to) {
+        System.out.println("[User] " + username + " sending follow request to group: " + to.getName());
+        facebookSystem.createGroupFollowRequest(this, to);
+    }
+
+    public void getNotification(String message) {
+        System.out.println("[User] " + username + " got new notification: " + message);
     }
 
     @Override
@@ -151,4 +208,10 @@ public class User implements Followable, PrivacyController {
 
     public Set<User> getBlocked() { return blocked; }
 
+    public List<User> getUsersToNotify() {
+        Set<User> ret = new HashSet<>();
+        ret.addAll(friends);
+        ret.addAll(followers);
+        return ret.stream().filter(e -> !blocked.contains(e)).toList();
+    }
 }

@@ -1,7 +1,8 @@
 package interfaces;
 
+import posts.comments.Comment;
 import users.User;
 
 public interface Commentable {
-    void addComment(User author, String content);
+    Comment addComment(User author, String content);
 }
