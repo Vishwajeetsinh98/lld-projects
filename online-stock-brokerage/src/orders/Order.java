@@ -1,5 +1,6 @@
 package orders;
 
+import notification.NotificationService;
 import stocks.Stock;
 import users.User;
 
@@ -59,6 +60,7 @@ public abstract class Order {
         fillPrice = tradePrice;
         fillDate = LocalDateTime.now();
         status = OrderStatus.FILLED;
+        NotificationService.sendOrderCompletionMessage(trader, this);
 
         if (orderDirection == OrderDirection.LONG) {
             trader.getPortfolio().addLot(stock, quantity, fillPrice);
@@ -66,6 +68,8 @@ public abstract class Order {
             trader.getPortfolio().removeLot(stock, quantity, fillPrice);
         }
     }
+
+    public String getId() { return id; }
 
     public Stock getStock() { return stock; }
 

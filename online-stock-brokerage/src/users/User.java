@@ -1,6 +1,7 @@
 package users;
 
 import exchange.StockExchange;
+import orders.Order;
 import pricing.PricingService;
 import stocks.Stock;
 
@@ -18,6 +19,10 @@ public class User {
 
     public void getWatchlistNotification(String ticker, double price) {
         System.out.println("[User] " + id + " received price change notification on " + ticker + " new price: " + price);
+    }
+
+    public void getOrderNotification(Order order) {
+        System.out.println("[User] " + id + " your order " + order.getId() + " has been filled - please check your portfolio");
     }
 
     public String getId() { return id; }
