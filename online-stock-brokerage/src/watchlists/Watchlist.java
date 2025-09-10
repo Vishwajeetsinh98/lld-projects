@@ -1,6 +1,7 @@
 package watchlists;
 
 import exchange.StockExchange;
+import notification.NotificationService;
 import pricing.PriceChangeListener;
 import pricing.PricingService;
 import stocks.Stock;
@@ -47,7 +48,7 @@ public class Watchlist implements PriceChangeListener {
         }
         System.out.println("[Watchlist] " + id + " received a price change notification on stock " + stock.getTicker());
         for (User user : subscribers) {
-            user.getWatchlistNotification(stock);
+            NotificationService.sendMessage(user, stock.getTicker(), stock.getPrice());
         }
     }
 

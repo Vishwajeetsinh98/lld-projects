@@ -9,16 +9,20 @@ import java.util.Objects;
 public class User {
 
     private final String id;
+    private final Portfolio portfolio;
 
     public User(String id) {
         this.id = id;
+        portfolio = new Portfolio(this);
     }
 
-    public void getWatchlistNotification(Stock stock) {
-        System.out.println("[User] " + id + " received price change notification on " + stock.getTicker() + " new price: " + stock.getPrice());
+    public void getWatchlistNotification(String ticker, double price) {
+        System.out.println("[User] " + id + " received price change notification on " + ticker + " new price: " + price);
     }
 
     public String getId() { return id; }
+
+    public Portfolio getPortfolio() { return portfolio; }
 
     @Override
     public boolean equals(Object o) {

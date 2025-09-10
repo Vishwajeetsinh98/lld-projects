@@ -1,5 +1,8 @@
 package users;
 
+import stocks.Stock;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,11 +15,30 @@ public class Portfolio {
         lots = new ArrayList<>();
     }
 
+    public void addLot(Stock stock, int quantity, double price) {
+        Lot newLot = new Lot(stock, quantity, price, LocalDateTime.now());
+        addLot(newLot);
+    }
+
     public void addLot(Lot lot) {
         if(!lots.contains(lot)) {
             lots.add(lot);
             System.out.println("[Portfolio] Portfolio for user " + user.getId() + " added new lot: " + lot);
         }
+    }
+
+    public void removeLot(Stock stock, int quantity, double price) {
+        Lot newLot = new Lot(stock, quantity, price, LocalDateTime.now());
+        Lot lotToDelete = null;
+        for (Lot lot : lots) {
+            if (lot.equals(newLot)) {
+                lotToDelete = lot;
+                break;
+            }
+        }
+        if (lotToDelete != null)
+            lotToDelete.setQuantity(0);
+        removeLot(lotToDelete);
     }
 
     public void removeLot(Lot lot) {
@@ -37,5 +59,15 @@ public class Portfolio {
     }
 
     public User getUser() { return user; }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("User: ").append(user.getId()).append("'s portfolio:");
+        for (Lot lot : lots) {
+            sb.append(lot);
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 
 }

@@ -31,7 +31,7 @@ public class Lot {
     @Override
     public String toString() {
         return "Lot{" +
-                "stock=" + stock +
+                "stock=" + stock.getTicker() +
                 ", quantity=" + quantity +
                 ", purchasePrice=" + purchasePrice +
                 ", purchaseTime=" + purchaseTime +
@@ -44,12 +44,11 @@ public class Lot {
         if (!(o instanceof Lot lot)) return false;
         return quantity == lot.quantity &&
                 Double.compare(purchasePrice, lot.purchasePrice) == 0 &&
-                    Objects.equals(stock, lot.stock) &&
-                        Objects.equals(purchaseTime, lot.purchaseTime);
+                    Objects.equals(stock, lot.stock);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(stock, quantity, purchasePrice, purchaseTime);
+        return Objects.hash(stock, quantity, purchasePrice);
     }
 }

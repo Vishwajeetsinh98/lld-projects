@@ -1,5 +1,7 @@
 package stocks;
 
+import exchange.StockExchange;
+
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -17,6 +19,7 @@ public class StockService {
         System.out.println("[StockService] Adding new stock: " + ticker);
         Stock newStock = new Stock(ticker, companyName, price);
         stockTickerMap.put(ticker, newStock);
+        StockExchange.getInstance().createStockOrderBook(newStock);
     }
 
     public void removeStock(String ticker) {

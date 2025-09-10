@@ -40,7 +40,9 @@ public class PricingService {
 
     public void updatePrice(Stock stock, double price) {
         System.out.println("[PricingService] Price changed for " + stock.getTicker() + " to " + price);
-        for (PriceChangeListener listener : stockListMap.getOrDefault(stock, List.of())) {
+        stock.setPrice(price);
+        // Creating new ArrayList to avoid ConcurrentModificationException
+        for (PriceChangeListener listener : new ArrayList<>(stockListMap.getOrDefault(stock, List.of()))) {
             listener.getPriceChangeNotification(stock);
         }
     }
